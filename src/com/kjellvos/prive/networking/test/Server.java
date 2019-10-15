@@ -44,14 +44,6 @@ public class Server extends Thread{
 	public synchronized void move(int move) {
 		inputMove = move;
 		madeMove = true;
-		/*int tryMove;
-		Random random = new Random();
-		while (true) {
-			tryMove = random.nextInt(9);
-			if (gameField[tryMove] == 0) {
-				return tryMove;
-			}
-		}*/
 	}
 
 	public boolean moveLeft() {
@@ -76,10 +68,7 @@ public class Server extends Thread{
 	        	String JSON = br.readLine(); //receiving message
 	        	System.out.println("Server received: " + JSON);
 	        	
-	        	if (JSON.equals("setup")) {            	
-	            	Random random = new Random();
-	            	playerOne = random.nextBoolean();
-	            		            	
+	        	if (JSON.equals("setup")) {            	            	
 	            	if (playerOne) {
 	        			System.out.println("Server send: startgame-1");
 	            		out.println("startgame-1");
@@ -93,6 +82,8 @@ public class Server extends Thread{
 	            		int move = inputMove;
 	            		inputMove = -1;
 	            		madeMove = false;
+	            		
+	        			gameField[move] = 1;
 	            		
 	            		System.out.println("Server send: move-" + move);
 		        		out.println("move-" + move);
@@ -141,5 +132,9 @@ public class Server extends Thread{
 
 	public boolean getIsPlayerOne() {
 		return playerOne;
+	}
+	
+	public void setIsPlayerOne(boolean playerOne) {
+		this.playerOne = playerOne;
 	}
 }

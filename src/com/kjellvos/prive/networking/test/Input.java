@@ -17,14 +17,6 @@ public class Input {
 	public void waitForInput(boolean amIServer){
 		int input = Integer.parseInt(scanner.nextLine());
 		
-		try {
-			synchronized (this) {
-				this.wait(new Random().nextInt(1000));
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
 		if (amIServer) {
 			synchronized (this) {
 				server.move(input);

@@ -10,7 +10,7 @@ import java.net.Socket;
 public class Client extends Thread {
 	public static int PORT = 4444;
 	private static Socket socket;
-	private static String serverIP = "192.168.1.8";
+	private static String serverIP = "127.0.0.1";
 
 	private PrintWriter out;
 	private BufferedReader in;
@@ -35,14 +35,6 @@ public class Client extends Thread {
 	public synchronized void move(int move) {
 		inputMove = move;
 		madeMove = true;
-		/*int tryMove;
-		Random random = new Random();
-		while (true) {
-			tryMove = random.nextInt(9);
-			if (gameField[tryMove] == 0) {
-				return tryMove;
-			}
-		}*/
 	}
 	
 	public boolean moveLeft() {

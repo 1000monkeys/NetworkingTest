@@ -1,5 +1,6 @@
 package com.kjellvos.prive.networking.test;
 import java.io.IOException;
+import java.util.Random;
 
 public class Main {
 	private static Server server = null;
@@ -15,15 +16,14 @@ public class Main {
 		input = new Input(server, client);
 		
 		System.out.println("Starting objects");
+    	Random random = new Random();
+    	server.setIsPlayerOne(random.nextBoolean());
 		server.start();
 		System.out.println("Server started");
 		client.start();
 		System.out.println("Client started");
 		
-		boolean amIServer = false;
-		if (server.getIsPlayerOne()) {
-			amIServer = true;
-		}
+		boolean amIServer = server.getIsPlayerOne();
 		for (int i = 0; i < 9; i++) {
 			input.waitForInput(amIServer);
 			amIServer = !amIServer;
