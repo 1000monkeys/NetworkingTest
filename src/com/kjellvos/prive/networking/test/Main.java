@@ -20,6 +20,7 @@ public class Main {
     	server.setIsPlayerOne(random.nextBoolean());
 		server.start();
 		System.out.println("Server started");
+		//pass client serverip
 		client.start();
 		System.out.println("Client started");
 		
